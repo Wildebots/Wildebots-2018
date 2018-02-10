@@ -3,7 +3,7 @@ package frc.team4902.robot.commands;
 import frc.team4902.robot.Input;
 import frc.team4902.robot.Robot;
 
-import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 /**
  *
@@ -23,13 +23,16 @@ public class DriveCommand extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		if (Robot.driveSystem.driveType.get()/*SmartDashboard.getBoolean("DB/Button 0", true)*/) {
-			Robot.driveSystem.getDrive().tankDrive(Input.getPrimaryInstance().getRawAxis(1), Input.getPrimaryInstance().getRawAxis(5));
+		if (Robot.driveSystem.driveType.get()/*SmartDashboard.getBoolean("DB/Button 0", true)*/) { // drivetype: true == tank and false == arcade
+//			Robot.driveSystem.getDrive().tankDrive(Input.getPrimaryInstance().getRawAxis(1), Input.getPrimaryInstance().getRawAxis(5));
+			Robot.driveSystem.getDrive().tankDrive(Input.getPrimaryInstance().getLeftY(), Input.getPrimaryInstance().getRightY());
 		} else {
 			Robot.driveSystem.getDrive().arcadeDrive(Input.getPrimaryInstance().getLeftY(), Input.getPrimaryInstance().getLeftX());
 //			Robot.driveSystem.getDrive().arcadeDrive(Input.getPrimaryInstance().getJoystick());
 		}
+		
 	}
+	
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override

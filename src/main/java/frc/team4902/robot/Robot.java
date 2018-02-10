@@ -6,6 +6,9 @@ import frc.team4902.robot.subsystems.DriveSystem;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import frc.team4902.robot.EventSystem;
+import frc.team4902.robot.Input;
+import frc.team4902.robot.EventSystem.HandlerType;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -40,6 +43,11 @@ public class Robot extends IterativeRobot {
 		// Put Smart dashboard or shuffle board stuff here
 		
 		// Put EventSystem stuff here
+		
+		
+		EventSystem.getInstance().addHandler(() -> driveSystem.driveType.set(!driveSystem.driveType.get()),
+				Input.getPrimaryInstance().getButtonX(), HandlerType.OnPress);
+//		This switches between arcade mode and tank
 
 	}
 

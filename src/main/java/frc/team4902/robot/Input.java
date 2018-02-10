@@ -14,8 +14,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public final class Input {
 	
 	private Input(int port){
-		this.stickPort = port;
-		this.stick = new XboxController(this.stickPort);
+		stickPort = port;
+		stick = new XboxController(stickPort);
+		threshold = 0.18;
 		A = new JoystickButton(stick, 1);
 		B = new JoystickButton(stick, 2);
 		X = new JoystickButton(stick, 3);
@@ -24,6 +25,8 @@ public final class Input {
 		RightBumper = new JoystickButton(stick, 6);
 	}
 
+	private double threshold;
+	
 	private int stickPort;
 
 	// Joystick object mapped to the port of the xbox controller
@@ -34,7 +37,7 @@ public final class Input {
 
 	// Instance of this class
 	private static Input primaryInstance = new Input(0);
-//	private static Input secondaryInstance = new Input(1);
+	//	private static Input secondaryInstance = new Input(1);
 
 	/**
 	 * Useless shit made by George to make life more difficult, but you have to use it to access Input methods
@@ -54,12 +57,12 @@ public final class Input {
 	}
 	
 	public void rumbleTime(float intensity, RumbleType type, Duration time) {
-		this.rumble(intensity, type);
+		rumble(intensity, type);
 		//MasterTimer.getInstance().schedule(() -> this.rumble(0, type),time);
 	}
 	
 	public void rumble(float intensity, RumbleType type) {
-		this.stick.setRumble(type, intensity);
+		stick.setRumble(type, intensity);
 	}
 
 	public XboxController getJoystick() {
@@ -67,7 +70,7 @@ public final class Input {
 	}
 	
 	public double getRawAxis(int axis) {
-		return this.stick.getRawAxis(axis);
+		return stick.getRawAxis(axis);
 	}
 
 	public double getLeftX(){
@@ -79,7 +82,6 @@ public final class Input {
 	}
 
 	public double getLeftYThreshold() {
-		double threshold = 0.18;
 		if (Math.abs(getLeftY()) < threshold) {
 			return 0;
 		} else {
@@ -88,8 +90,7 @@ public final class Input {
 	}
 
 	public double getRightYThreshold() {
-		double threshold = 0.18;
-		if (Math.abs(getRightY()) < threshold) {
+		if (Math.abs(getRightY()) < threshold) { // threshold = 0.18
 			return 0;
 		} else {
 			return getRightY();
