@@ -2,10 +2,6 @@ package frc.team4902.robot.subsystems;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.omg.CORBA.Environment;
-
-import frc.team4902.robot.Ports;
-import frc.team4902.robot.commands.DriveCommand;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDOutput;
 //import edu.wpi.first.wpilibj.RobotDrive;
@@ -13,6 +9,8 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.team4902.robot.Ports;
+import frc.team4902.robot.commands.DriveCommand;
 
 /**
  *The drive system controls the motors responsible for driving the robot
@@ -36,7 +34,12 @@ public class DriveSystem extends Subsystem implements PIDOutput {
 	
 	private final DifferentialDrive drive = new DifferentialDrive(left, right);
 	
-	private DriveSystem() {super();}
+	// true -> arcade ; false -> tank
+	public final AtomicBoolean driveType = new AtomicBoolean(true);
+	
+	private DriveSystem() {
+		super();
+	}
 	
 	public static DriveSystem getInstance() {
 		return INSTANCE;

@@ -29,6 +29,22 @@ public final class Input {
 			super(port);
 		}
 		
+		public double getLeftX(){
+			return this.getRawAxis(0);
+		}
+
+		public double getLeftY() {
+			return this.getRawAxis(1);
+		}
+		
+		public double getRightX() {
+			return this.getRawAxis(4);
+		}
+		
+		public double getRightY() {
+			return this.getRawAxis(5);
+		}
+		
 		public boolean isPluggedIn() {
 			return DriverStation.getInstance().getJoystickIsXbox(getPort());
 		}
