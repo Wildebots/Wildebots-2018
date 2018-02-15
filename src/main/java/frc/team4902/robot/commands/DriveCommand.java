@@ -19,11 +19,13 @@ public class DriveCommand extends Command {
 			System.out.println("Using xbox");
 			
 			if (DriveSystem.getInstance().driveType.get()) {
+				
 				DriveSystem.getInstance().getDrive().arcadeDrive(Input.primaryXBox.getLeftY(), Input.primaryXBox.getLeftX());
 				
 				SmartDashboard.putString("Drive Type", "Arcade Drive");
 			
 			} else {
+				
 				DriveSystem.getInstance().getDrive().tankDrive(Input.primaryXBox.getLeftY(), Input.primaryXBox.getRightY());
 			
 				SmartDashboard.putString("Drive Type", "Tank Drive");

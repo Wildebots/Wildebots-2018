@@ -5,7 +5,7 @@ import frc.team4902.robot.subsystems.DriveSystem;
 
 public class Autodrive extends Command {
 	
-	private double leftspeed, rightspeed, duration;
+	private final double leftspeed, rightspeed, duration;
 	
 	/**
 	 * @param leftspeed the speed for the left drive

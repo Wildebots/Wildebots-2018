@@ -2,6 +2,7 @@ package frc.team4902.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.team4902.robot.subsystems.DriveSystem;
 
@@ -17,6 +18,10 @@ public class Robot extends TimedRobot {
 		Input.primaryXBox.Y.whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(true)));
 		
 		Input.primaryXBox.B.whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(false)));
+		
+		Input.Attack3.getButton(3).whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(true)));
+		
+		Input.Attack3.getButton(2).whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(false)));
 		
 	}
 

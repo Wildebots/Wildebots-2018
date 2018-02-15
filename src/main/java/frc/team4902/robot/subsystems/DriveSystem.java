@@ -42,6 +42,9 @@ public class DriveSystem extends Subsystem implements PIDOutput {
 	// true -> arcade ; false -> tank
 	public final AtomicBoolean driveType = new AtomicBoolean(true);
 	
+	// 6 inch diameter, inches to revs
+	public static final double INCHES_TO_REVS = 6*Math.PI;
+	
 	private DriveSystem() {
 		super();
 	}
@@ -59,7 +62,10 @@ public class DriveSystem extends Subsystem implements PIDOutput {
 	}
 	
 	public double getRotations() {
-		return (leftEncoder.get() + rightEncoder.get())/720.0;
+		// Encoder counts 360 for one rotation
+		// Encoder shaft turns once for every three rotations of the output shaft 3:1 ratio
+		// Divide by two because two encoders
+		return (leftEncoder.get() + rightEncoder.get())/240.0;
 	}
 		
 	
@@ -72,6 +78,7 @@ public class DriveSystem extends Subsystem implements PIDOutput {
 		leftSolenoid.set(high);
 		rightSolenoid.set(high);
 	}
+	
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveCommand());
 	}
