@@ -6,7 +6,9 @@ public enum Ports {
 	
 	DriveTrainLeftEncoderA(0), DriveTrainLeftEncoderB(1),
 	
-	DriveTrainRightEncoderA(2), DriveTrainRightEncoderB(3);
+	DriveTrainRightEncoderA(2), DriveTrainRightEncoderB(3),
+	
+	DriveTrainLeftSolenoid(0), DriveTrainRightSolenoid(1);
 	
 	public final int PORT;
 	

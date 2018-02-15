@@ -4,11 +4,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.Solenoid;
 //import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4902.robot.Ports;
 import frc.team4902.robot.commands.DriveCommand;
 
@@ -34,6 +36,9 @@ public class DriveSystem extends Subsystem implements PIDOutput {
 	
 	private final DifferentialDrive drive = new DifferentialDrive(left, right);
 	
+	private final Solenoid leftSolenoid = new Solenoid(Ports.DriveTrainLeftSolenoid.PORT),
+			rightSolenoid = new Solenoid(Ports.DriveTrainRightSolenoid.PORT);
+	
 	// true -> arcade ; false -> tank
 	public final AtomicBoolean driveType = new AtomicBoolean(true);
 	
@@ -52,7 +57,21 @@ public class DriveSystem extends Subsystem implements PIDOutput {
 	public DifferentialDrive getDrive() {
 		return drive;
 	}
+	
+	public double getRotations() {
+		return (leftEncoder.get() + rightEncoder.get())/720.0;
+	}
 		
+	
+	public void setHighGear(boolean high) {
+		if (high) {
+			SmartDashboard.putString("Transmission", "High");
+		} else {
+			SmartDashboard.putString("Transmission", "Low");
+		}
+		leftSolenoid.set(high);
+		rightSolenoid.set(high);
+	}
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveCommand());
 	}
