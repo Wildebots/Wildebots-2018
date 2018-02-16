@@ -23,7 +23,9 @@ public final class Input {
 				leftBumper = new JoystickButton(this, 5),
 				rightBumper = new JoystickButton(this, 6),
 				start = new JoystickButton(this, 7),
-				select = new JoystickButton(this, 8);
+				back = new JoystickButton(this, 8),
+				leftTrigger = new JoystickButton(this, 9),
+				rightTrigger = new JoystickButton(this, 10);
 		
 		public XBoxInput(int port) {
 			super(port);
