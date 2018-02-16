@@ -39,6 +39,7 @@ public class Robot extends TimedRobot {
 		
 		Input.primaryXBox.A.whenPressed(RunnableCommand.create(() -> ElevatorSystem.toPosition(ElevatorPosition.Bottom)));
 		
+		
 		// ATTACK 3 STUFF
 		Input.Attack3.getButton(3).whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(true)));
 		
