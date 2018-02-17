@@ -5,18 +5,20 @@ import frc.team4902.robot.commands.GripCommand;
 
 public class GripSystem extends Subsystem{
 	
+	private static GripSystem INSTANCE = new GripSystem();
 	private static boolean inIntakePosition = false;
-	protected void execute() {
-//		setDefaultCommand(new (Grip()));
+	
+	private GripSystem() {
+		super();
 	}
 	
-	public static void intake() {
+	public void intake() {
 		if (!inIntakePosition) {
 			inIntakePosition = true;
 		}
 	}
 	
-	public static void outake() {
+	public void outake() {
 		if (inIntakePosition) {
 			inIntakePosition = false;
 		}
@@ -24,7 +26,11 @@ public class GripSystem extends Subsystem{
 
 	@Override
 	protected void initDefaultCommand() {
-		
+		setDefaultCommand(new GripCommand());
+	}
+
+	public static GripSystem getInstance() {
+		return INSTANCE;
 	}
 	
 }

@@ -1,20 +1,32 @@
 package frc.team4902.robot.subsystems;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.team4902.robot.commands.ElevatorCommand;
 
-public class ElevatorSystem extends Subsystem {
+public class ElevatorSystem extends Subsystem implements PIDOutput {
 
+	private static final ElevatorSystem INSTANCE = new ElevatorSystem();
 	private static ElevatorPosition elevatorPosition = ElevatorPosition.Bottom;
-	private static ElevatorMode mode = ElevatorMode.Presets;
+	public final AtomicBoolean elevatorManualOveride = new AtomicBoolean(false);
 
 	// private static ElevatorMode mode = ElevatorMode.Manual;
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
-
+		setDefaultCommand(new ElevatorCommand());
+	}
+	
+	private ElevatorSystem() {
+		super();
 	}
 
-	public static void toPosition(ElevatorPosition newPosition) {
+	public static ElevatorSystem getInstance() {
+		return INSTANCE;
+	}
+
+	public void toPosition(ElevatorPosition newPosition) {
 		switch (newPosition) {
 		case Top:
 			// if statements won't be needed if you make a command that goes to max
@@ -43,6 +55,20 @@ public class ElevatorSystem extends Subsystem {
 		default:
 			break;
 		}
+	}
+
+	public void changeElevatorMode() {
+		elevatorManualOveride.set(!elevatorManualOveride.get());
+	}
+	
+	public boolean getElevatorMode() {
+		return elevatorManualOveride.get();
+	}
+
+	@Override
+	public void pidWrite(double output) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

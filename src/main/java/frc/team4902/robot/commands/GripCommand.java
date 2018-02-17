@@ -5,13 +5,7 @@ import frc.team4902.robot.Input;
 import frc.team4902.robot.subsystems.DriveSystem;
 
 public class GripCommand extends Command{
-	public void closeGrip(){
-		
-	}
-	
-	public void releaseGrip(){
-		
-	}
+
 	@Override
 	protected void execute() {
 		

@@ -18,32 +18,33 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		
 		// XBOX CONTROLLER STUFF
-		Input.primaryXBox.X.whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().driveType.set(!DriveSystem.getInstance().driveType.get())));
+		Input.primaryXBox.X.whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().changeDriveMode()));
 		// ^ OR USE START BUTTON
-		
+
 		Input.primaryXBox.rightBumper.whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(true)));
 		
 		Input.primaryXBox.leftBumper.whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(false)));
 		
-		Input.primaryXBox.leftTrigger.whenPressed(RunnableCommand.create(() -> GripSystem.intake()));
+		Input.primaryXBox.leftTrigger.whenPressed(RunnableCommand.create(() -> GripSystem.getInstance().intake()));
 		
-		Input.primaryXBox.rightTrigger.whenPressed(RunnableCommand.create(() -> GripSystem.outake()));
-		
-		Input.primaryXBox.rightTrigger.whenPressed(RunnableCommand.create(() -> GripSystem.outake()));
+		Input.primaryXBox.rightTrigger.whenPressed(RunnableCommand.create(() -> GripSystem.getInstance().outake()));
 		
 		// ELEVATOR STUFF
 		
-		Input.primaryXBox.Y.whenPressed(RunnableCommand.create(() -> ElevatorSystem.toPosition(ElevatorPosition.Top)));
+		Input.primaryXBox.back.whenPressed(RunnableCommand.create(() -> ElevatorSystem.getInstance().changeElevatorMode()));
 		
-		Input.primaryXBox.B.whenPressed(RunnableCommand.create(() -> ElevatorSystem.toPosition(ElevatorPosition.Middle)));
+//		Input.primaryXBox.Y.whenPressed(RunnableCommand.create(() -> ElevatorSystem.getInstance().toPosition(ElevatorPosition.Top)));
 		
-		Input.primaryXBox.A.whenPressed(RunnableCommand.create(() -> ElevatorSystem.toPosition(ElevatorPosition.Bottom)));
+//		Input.primaryXBox.B.whenPressed(RunnableCommand.create(() -> ElevatorSystem.getInstance().toPosition(ElevatorPosition.Middle)));
 		
+//		Input.primaryXBox.A.whenPressed(RunnableCommand.create(() -> ElevatorSystem.getInstance().toPosition(ElevatorPosition.Bottom)));
 		
 		// ATTACK 3 STUFF
+		
 		Input.Attack3.getButton(3).whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(true)));
 		
 		Input.Attack3.getButton(2).whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(false)));
+		
 		
 	}
 
