@@ -39,9 +39,6 @@ public class DriveSystem extends Subsystem implements PIDOutput {
 	private final Solenoid leftSolenoid = new Solenoid(Ports.DriveTrainLeftSolenoid.PORT),
 			rightSolenoid = new Solenoid(Ports.DriveTrainRightSolenoid.PORT);
 
-	// true -> arcade ; false -> tank
-	public final AtomicBoolean driveType = new AtomicBoolean(true);
-
 	// 6 inch diameter, inches to revs
 	public static final double INCHES_TO_REVS = 6 * Math.PI;
 
@@ -55,10 +52,6 @@ public class DriveSystem extends Subsystem implements PIDOutput {
 
 	public void stop() {
 		drive.tankDrive(0, 0);
-	}
-	
-	public void changeDriveMode() {
-		driveType.set(!driveType.get());
 	}
 
 	public DifferentialDrive getDrive() {

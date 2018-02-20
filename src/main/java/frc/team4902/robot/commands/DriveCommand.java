@@ -18,7 +18,7 @@ public class DriveCommand extends Command {
 			
 			System.out.println("Using xbox");
 			
-			if (DriveSystem.getInstance().driveType.get()) {
+			if (Input.getDriveType()) {
 				
 				DriveSystem.getInstance().getDrive().arcadeDrive(Input.primaryXBox.getLeftY(), Input.primaryXBox.getLeftX());
 				
