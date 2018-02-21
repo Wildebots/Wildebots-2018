@@ -27,5 +27,13 @@ public class GripperShootCommand extends Command {
 	protected boolean isFinished() {
 		return this.isTimedOut();
 	}
+	
+	public static GripperShootCommand shoot() {
+		return new GripperShootCommand(0.7, 2);
+	}
+	
+	public static GripperShootCommand pickup() {
+		return new GripperShootCommand(0.6, 3);
+	}
 
 }

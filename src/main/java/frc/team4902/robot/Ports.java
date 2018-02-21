@@ -2,19 +2,19 @@ package frc.team4902.robot;
 
 public enum Ports {
 
-	DriveTrainLeftFront(0), DriveTrainLeftBack(1), DriveTrainRightFront(2), DriveTrainRightBack(3),
+	DriveTrainLeftFront(1), DriveTrainLeftBack(0), DriveTrainRightFront(8), DriveTrainRightBack(9), // Real values
 	
-	DriveTrainLeftEncoderA(0), DriveTrainLeftEncoderB(1),
+	DriveTrainLeftEncoderA(2), DriveTrainLeftEncoderB(3), // Real values
 	
-	DriveTrainRightEncoderA(2), DriveTrainRightEncoderB(3),
+	DriveTrainRightEncoderA(0), DriveTrainRightEncoderB(1), // Real values
 	
-	DriveTrainLeftSolenoid(0), DriveTrainRightSolenoid(1),
+	DriveTrainLeftSolenoid(0), DriveTrainRightSolenoid(1), // Real values
 	
-	ElevatorMotorA(0), ElevatorMotorB(1),
+	ElevatorMotorA(3), ElevatorMotorB(6), // Real values
 	
-	ElevatorEncoderA(0), ElevatorEncoderB(1),
+	ElevatorEncoderA(0), ElevatorEncoderB(1), // Todo
 	
-	GripperMotorA(0), GripperMotorB(1);
+	GripperMotorA(0), GripperMotorB(1); // Todo
 	
 	public final int PORT;
 	

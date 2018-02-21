@@ -8,13 +8,10 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team4902.robot.commands.ElevatorCommand;
 import frc.team4902.robot.commands.GripperShootCommand;
 import frc.team4902.robot.subsystems.DriveSystem;
 import frc.team4902.robot.subsystems.ElevatorSystem;
-import frc.team4902.robot.subsystems.GripSystem;
 
 public final class Input {
 
@@ -93,15 +90,7 @@ public final class Input {
 	 */
 	public static void setDriveType(boolean mode) {
 		driveType.set(mode);
-		if (mode) {
-			
-			
-
-		} else {
-			
-			
-			
-		}
+		SmartDashboard.putString("Drive Type", (Input.driveType.get()) ? "Arcade" : "Tank");
 	}
 	
 	public static boolean getDriveType() {
@@ -110,7 +99,6 @@ public final class Input {
 	
 	public static void toggleDriveType() {
 		Input.setDriveType(!Input.getDriveType());
-		SmartDashboard.putString("Drive Type", (Input.driveType.get()) ? "Arcade" : "Tank");
 	}
 
 	public static void initializeInputs() {
@@ -140,7 +128,7 @@ public final class Input {
 			if (driveType.get()) {
 				DriveSystem.getInstance().setHighGear(false);
 			} else {
-				new GripperShootCommand(0.6, 3).start();
+				GripperShootCommand.pickup().start();
 			}
 		}));
 		
@@ -148,7 +136,7 @@ public final class Input {
 			if (driveType.get()) {
 				DriveSystem.getInstance().setHighGear(true);
 			} else {
-				new GripperShootCommand(-0.8, 2).start();
+				GripperShootCommand.shoot().start();
 			}
 		}));
 		
@@ -169,9 +157,9 @@ public final class Input {
 		Input.Attack3.getButton(2)
 				.whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(false)));
 		
-		Input.Attack3.getButton(4).whenPressed(new GripperShootCommand(0.6, 3));
+		Input.Attack3.getButton(4).whenPressed(GripperShootCommand.pickup());
 		
-		Input.Attack3.getButton(5).whenPressed(new GripperShootCommand(-0.8, 2));
+		Input.Attack3.getButton(5).whenPressed(GripperShootCommand.shoot());
 
 	}
 

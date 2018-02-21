@@ -33,8 +33,7 @@ public class DriveSystem extends Subsystem implements PIDOutput {
 
 	private final DifferentialDrive drive = new DifferentialDrive(left, right);
 
-	private final Solenoid leftSolenoid = new Solenoid(Ports.DriveTrainLeftSolenoid.PORT),
-			rightSolenoid = new Solenoid(Ports.DriveTrainRightSolenoid.PORT);
+	private final Solenoid solenoid = new Solenoid(Ports.DriveTrainLeftSolenoid.PORT);
 
 	// 6 inch diameter, inches to revs
 	public static final double INCHES_TO_REVS = 6 * Math.PI;
@@ -69,8 +68,7 @@ public class DriveSystem extends Subsystem implements PIDOutput {
 		} else {
 			SmartDashboard.putString("Transmission", "Low");
 		}
-		leftSolenoid.set(high);
-		rightSolenoid.set(high);
+		solenoid.set(high);
 	}
 
 	public void initDefaultCommand() {
