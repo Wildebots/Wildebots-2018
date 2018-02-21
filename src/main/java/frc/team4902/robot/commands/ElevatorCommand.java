@@ -23,7 +23,7 @@ public class ElevatorCommand extends Command {
 					ElevatorSystem.getInstance().pid.disable();
 				}
 					
-				ElevatorSystem.getInstance().elevatorMotor.set(Input.primaryXBox.getRightY());
+				ElevatorSystem.getInstance().motors.set(Input.primaryXBox.getRightY());
 			
 			}
 		} else if (Input.Attack3.isPluggedIn()) {

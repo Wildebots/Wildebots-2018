@@ -118,18 +118,21 @@ public final class Input {
 		Input.primaryXBox.Y.whenPressed(RunnableCommand.create(() -> {
 			if (!ElevatorSystem.isManualOverride()) {
 				/* Elevator top pos */
+				ElevatorSystem.getInstance().pid.setSetpoint(ElevatorSystem.TOP);
 			}
 		}));
 		
 		Input.primaryXBox.B.whenPressed(RunnableCommand.create(() -> {
 			if (!ElevatorSystem.isManualOverride()) {
 				/* Elevator middle pos */
+				ElevatorSystem.getInstance().pid.setSetpoint(ElevatorSystem.MID);
 			}
 		}));
 		
 		Input.primaryXBox.A.whenPressed(RunnableCommand.create(() -> {
 			if (!ElevatorSystem.isManualOverride()) {
 				/* Elevator bottom pos */
+				ElevatorSystem.getInstance().pid.setSetpoint(ElevatorSystem.BOT);
 			}
 		}));
 		

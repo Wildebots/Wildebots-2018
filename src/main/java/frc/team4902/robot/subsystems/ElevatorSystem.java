@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4902.robot.Ports;
@@ -19,7 +20,9 @@ public class ElevatorSystem extends Subsystem implements PIDOutput {
 	
 	public final Encoder encoder = new Encoder(Ports.ElevatorEncoderA.PORT, Ports.ElevatorEncoderB.PORT);
 	
-	public final Spark elevatorMotor = new Spark(Ports.ElevatorMotor.PORT);
+	public final Spark motorA = new Spark(Ports.ElevatorMotorA.PORT), motorB = new Spark(Ports.ElevatorMotorB.PORT);
+	
+	public final SpeedControllerGroup motors = new SpeedControllerGroup(motorA, motorB);
 	
 	public final PIDController pid = new PIDController(0, 0, 0, encoder, this);
 
@@ -45,11 +48,16 @@ public class ElevatorSystem extends Subsystem implements PIDOutput {
 	public void toggleOverride() {
 		manualOverride.set(!manualOverride.get());
 		SmartDashboard.putString("Elevator Override", "Override " + ((manualOverride.get()) ? "Enabled" : "Disabled"));
+		if (manualOverride.get()) {
+			pid.disable();
+		} else {
+			pid.enable();
+		}
 	}
 
 	@Override
 	public void pidWrite(double output) {
-		elevatorMotor.set(output);
+		motors.set(output);
 	}
 
 }

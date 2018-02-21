@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.team4902.robot.Input;
 import frc.team4902.robot.subsystems.GripSystem;
 
-public class GripCommand extends Command{
+public class GripCommand extends Command {
 
 	@Override
 	protected void execute() {

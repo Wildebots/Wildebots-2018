@@ -10,7 +10,7 @@ public enum Ports {
 	
 	DriveTrainLeftSolenoid(0), DriveTrainRightSolenoid(1),
 	
-	ElevatorMotor(0),
+	ElevatorMotorA(0), ElevatorMotorB(1),
 	
 	ElevatorEncoderA(0), ElevatorEncoderB(1),
 	
