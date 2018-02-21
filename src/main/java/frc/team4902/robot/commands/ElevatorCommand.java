@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.team4902.robot.Input;
 import frc.team4902.robot.subsystems.ElevatorSystem;
 
-public class ElevatorCommand extends Command{
+public class ElevatorCommand extends Command {
 	
 	public ElevatorCommand() {
 		requires(ElevatorSystem.getInstance());
@@ -22,13 +22,20 @@ public class ElevatorCommand extends Command{
 				if (ElevatorSystem.getInstance().pid.isEnabled()) {
 					ElevatorSystem.getInstance().pid.disable();
 				}
+					
 				ElevatorSystem.getInstance().elevatorMotor.set(Input.primaryXBox.getRightY());
+			
 			}
 		} else if (Input.Attack3.isPluggedIn()) {
+			
 			if (!ElevatorSystem.getInstance().pid.isEnabled()) {
+			
 				ElevatorSystem.getInstance().pid.enable();
+			
 			}
+			
 			ElevatorSystem.getInstance().pid.setSetpoint(Input.Attack3.getZ());
+		
 		}
 	}
 

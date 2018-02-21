@@ -110,6 +110,7 @@ public final class Input {
 	
 	public static void toggleDriveType() {
 		Input.setDriveType(!Input.getDriveType());
+		SmartDashboard.putString("Drive Type", (Input.driveType.get()) ? "Arcade" : "Tank");
 	}
 
 	public static void initializeInputs() {

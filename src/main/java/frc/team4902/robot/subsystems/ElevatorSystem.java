@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4902.robot.Ports;
 import frc.team4902.robot.commands.ElevatorCommand;
 
@@ -22,7 +23,7 @@ public class ElevatorSystem extends Subsystem implements PIDOutput {
 	
 	public final PIDController pid = new PIDController(0, 0, 0, encoder, this);
 
-	public final AtomicBoolean manualOverride = new AtomicBoolean(true);
+	private final AtomicBoolean manualOverride = new AtomicBoolean(true);
 	
 	@Override
 	protected void initDefaultCommand() {
@@ -43,6 +44,7 @@ public class ElevatorSystem extends Subsystem implements PIDOutput {
 	
 	public void toggleOverride() {
 		manualOverride.set(!manualOverride.get());
+		SmartDashboard.putString("Elevator Override", "Override " + ((manualOverride.get()) ? "Enabled" : "Disabled"));
 	}
 
 	@Override
