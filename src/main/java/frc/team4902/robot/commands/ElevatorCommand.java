@@ -15,15 +15,17 @@ public class ElevatorCommand extends Command {
 		if (Input.primaryXBox.isPluggedIn()) {
 			if (ElevatorSystem.isManualOverride()) {
 				
-				if (ElevatorSystem.getInstance().encoder.get() <= ElevatorSystem.LOW_LIM && Input.primaryXBox.getRightY() < 0) {
+				/*if (ElevatorSystem.getInstance().encoder.get() <= ElevatorSystem.LOW_LIM && Input.primaryXBox.getRightY() < 0) {
 					return;
 				}
 				
 				if (ElevatorSystem.getInstance().pid.isEnabled()) {
 					ElevatorSystem.getInstance().pid.disable();
-				}
+				}*/
 					
-				ElevatorSystem.getInstance().motors.set(Input.primaryXBox.getRightY());
+				System.out.println("Setting evelator speed");
+				
+				ElevatorSystem.getInstance().setSpeed(Input.primaryXBox.getRightY());
 			
 			}
 		} else if (Input.Attack3.isPluggedIn()) {

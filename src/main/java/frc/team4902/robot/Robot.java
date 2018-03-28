@@ -17,9 +17,17 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		
+		if (pdp.getVoltage() > 6.5) {
+			
+			pdp.clearStickyFaults();
+		
+		}
+		
 		Input.initializeInputs();
 		
 		SmartDashboard.putData("Reset Elevator Encoder", RunnableCommand.create(() -> ElevatorSystem.getInstance().encoder.reset()));
+		
+		DriveSystem.getInstance();
 		
 	}
 

@@ -141,6 +141,7 @@ public final class Input {
 		}));
 		
 		Input.primaryXBox.start.whenPressed(RunnableCommand.create(() -> {
+			System.out.println("Toggle evelator override");
 			ElevatorSystem.getInstance().toggleOverride();
 		}));
 

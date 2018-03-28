@@ -12,9 +12,9 @@ public enum Ports {
 	
 	ElevatorMotorA(3), ElevatorMotorB(6), // Real values
 	
-	ElevatorEncoderA(0), ElevatorEncoderB(1), // Todo
+	ElevatorEncoderA(4), ElevatorEncoderB(5), // Todo
 	
-	GripperMotorA(0), GripperMotorB(1); // Todo
+	GripperMotorA(7), GripperMotorB(2); // Todo
 	
 	public final int PORT;
 	

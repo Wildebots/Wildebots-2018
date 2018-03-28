@@ -16,8 +16,6 @@ public class DriveCommand extends Command {
 		
 		if (Input.primaryXBox.isPluggedIn()) {
 			
-			System.out.println("Using xbox");
-			
 			if (Input.getDriveType()) {
 				
 				DriveSystem.getInstance().getDrive().arcadeDrive(Input.primaryXBox.getLeftY(), Input.primaryXBox.getLeftX());
@@ -33,8 +31,6 @@ public class DriveCommand extends Command {
 			}
 			
 		} else if (Input.Attack3.isPluggedIn()) {
-			
-			System.out.println("Using Attack 3");
 			
 			DriveSystem.getInstance().getDrive().arcadeDrive(Input.Attack3.getY(), Input.Attack3.getX());
 			

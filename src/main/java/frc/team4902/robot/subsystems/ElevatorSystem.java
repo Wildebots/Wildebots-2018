@@ -16,7 +16,7 @@ public class ElevatorSystem extends Subsystem implements PIDOutput {
 
 	private static final ElevatorSystem INSTANCE = new ElevatorSystem();
 	
-	public static final double TOP = 0, MID = 0, BOT = 0, LOW_LIM = 0;
+	public static final double TOP = 0, MID = 0, BOT = 0, LOW_LIM = 0, MAX_SPEED = 0.4;
 	
 	public final Encoder encoder = new Encoder(Ports.ElevatorEncoderA.PORT, Ports.ElevatorEncoderB.PORT);
 	
@@ -57,7 +57,17 @@ public class ElevatorSystem extends Subsystem implements PIDOutput {
 
 	@Override
 	public void pidWrite(double output) {
-		motors.set(output);
+		this.setSpeed(output);
+	}
+	
+	public void setSpeed(double speed) {
+		if (speed > MAX_SPEED) {
+			motors.set(MAX_SPEED);
+		} else if (speed < -MAX_SPEED) {
+			motors.set(-MAX_SPEED);
+		} else {
+			motors.set(speed);
+		}
 	}
 
 }

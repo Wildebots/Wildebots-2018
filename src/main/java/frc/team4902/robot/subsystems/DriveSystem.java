@@ -40,6 +40,11 @@ public class DriveSystem extends Subsystem implements PIDOutput {
 
 	private DriveSystem() {
 		super();
+		
+		left.setInverted(true);
+		
+		right.setInverted(true);
+		
 	}
 
 	public static DriveSystem getInstance() {
