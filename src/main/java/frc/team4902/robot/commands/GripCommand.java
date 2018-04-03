@@ -15,7 +15,7 @@ public class GripCommand extends Command {
 		
 		if (Input.primaryXBox.isPluggedIn() && Input.getDriveType()) {
 			
-			GripSystem.getInstance().setMotors(Input.primaryXBox.getLeftTrigger() - Input.primaryXBox.getRightTrigger());
+		GripSystem.getInstance().setMotors(Input.primaryXBox.getLeftTrigger() - Input.primaryXBox.getRightTrigger());
 			
 		} else if (Input.primaryXBox.isPluggedIn() && !Input.getDriveType()) {
 			

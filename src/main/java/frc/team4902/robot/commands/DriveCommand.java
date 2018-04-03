@@ -1,5 +1,6 @@
 package frc.team4902.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4902.robot.Input;
@@ -14,17 +15,29 @@ public class DriveCommand extends Command {
 	@Override
 	protected void execute() {
 		
+		System.out.println("DriveCommand");
+		
+		if (DriverStation.getInstance().isAutonomous()) {
+			return;
+		}
+		
 		if (Input.primaryXBox.isPluggedIn()) {
 			
 			if (Input.getDriveType()) {
 				
-				DriveSystem.getInstance().getDrive().arcadeDrive(Input.primaryXBox.getLeftY(), Input.primaryXBox.getLeftX());
+				double ly = Input.primaryXBox.getLeftY();
+				
+				//if (ly > -0.05) {
+					DriveSystem.getInstance().getDrive().arcadeDrive(-Input.primaryXBox.getLeftY(), Input.primaryXBox.getLeftX());
+				//} else {
+					//DriveSystem.getInstance().getDrive().arcadeDrive(-Input.primaryXBox.getLeftY(), Input.primaryXBox.getLeftX());
+				//}
 				
 				SmartDashboard.putString("Drive Type", "Arcade Drive");
 			
 			} else {
 				
-				DriveSystem.getInstance().getDrive().tankDrive(Input.primaryXBox.getLeftY(), Input.primaryXBox.getRightY());
+				DriveSystem.getInstance().getDrive().tankDrive(-Input.primaryXBox.getLeftY(), -Input.primaryXBox.getRightY());
 			
 				SmartDashboard.putString("Drive Type", "Tank Drive");
 			

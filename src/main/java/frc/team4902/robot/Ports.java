@@ -8,13 +8,13 @@ public enum Ports {
 	
 	DriveTrainRightEncoderA(0), DriveTrainRightEncoderB(1), // Real values
 	
-	DriveTrainLeftSolenoid(0), DriveTrainRightSolenoid(1), // Real values
+	DriveTrainLeftSolenoid(1), DriveTrainRightSolenoid(0),
 	
 	ElevatorMotorA(3), ElevatorMotorB(6), // Real values
 	
 	ElevatorEncoderA(4), ElevatorEncoderB(5), // Todo
 	
-	GripperMotorA(7), GripperMotorB(2); // Todo
+	GripperMotorA(7), GripperMotorB(2); // Real values
 	
 	public final int PORT;
 	

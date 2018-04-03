@@ -28,12 +28,12 @@ public class GripperShootCommand extends Command {
 		return this.isTimedOut();
 	}
 	
-	public static GripperShootCommand shoot() {
-		return new GripperShootCommand(0.7, 2);
-	}
+	//public static GripperShootCommand shoot() {
+	//	return new GripperShootCommand(0.7, 2);
+	//}
 	
-	public static GripperShootCommand pickup() {
-		return new GripperShootCommand(0.6, 3);
-	}
+	//public static GripperShootCommand pickup() {
+	//	return new GripperShootCommand(0.6, 3);
+	//}
 
 }

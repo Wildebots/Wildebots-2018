@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4902.robot.commands.GripperShootCommand;
 import frc.team4902.robot.subsystems.DriveSystem;
 import frc.team4902.robot.subsystems.ElevatorSystem;
+import frc.team4902.robot.subsystems.Pneumatics;
 
 public final class Input {
 
@@ -127,22 +128,30 @@ public final class Input {
 		Input.primaryXBox.leftBumper.whenPressed(RunnableCommand.create(() -> {
 			if (driveType.get()) {
 				DriveSystem.getInstance().setHighGear(false);
-			} else {
-				GripperShootCommand.pickup().start();
-			}
+			} //else {
+			//	GripperShootCommand.pickup().start();
+			//}
 		}));
 		
 		Input.primaryXBox.rightBumper.whenPressed(RunnableCommand.create(() -> {
 			if (driveType.get()) {
 				DriveSystem.getInstance().setHighGear(true);
-			} else {
-				GripperShootCommand.shoot().start();
-			}
+			} //else {
+			//	GripperShootCommand.shoot().start();
+			//}
 		}));
 		
 		Input.primaryXBox.start.whenPressed(RunnableCommand.create(() -> {
 			System.out.println("Toggle evelator override");
 			ElevatorSystem.getInstance().toggleOverride();
+		}));
+		
+		Input.primaryXBox.back.whenPressed(RunnableCommand.create(() -> {
+			if (Pneumatics.getInstance().compressorState()) {
+				Pneumatics.getInstance().stopCompressor();
+			} else {
+				Pneumatics.getInstance().startCompressor();
+			}
 		}));
 
 		// XBOX CONTROLLER STUFF
@@ -152,15 +161,15 @@ public final class Input {
 
 		// ATTACK 3 STUFF
 
-		Input.Attack3.getButton(3)
-				.whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(true)));
+		//Input.Attack3.getButton(3)
+		//		.whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(true)));
 
-		Input.Attack3.getButton(2)
-				.whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(false)));
+		//Input.Attack3.getButton(2)
+		//		.whenPressed(RunnableCommand.create(() -> DriveSystem.getInstance().setHighGear(false)));
 		
-		Input.Attack3.getButton(4).whenPressed(GripperShootCommand.pickup());
+		//Input.Attack3.getButton(4).whenPressed(GripperShootCommand.pickup());
 		
-		Input.Attack3.getButton(5).whenPressed(GripperShootCommand.shoot());
+		//Input.Attack3.getButton(5).whenPressed(GripperShootCommand.shoot());
 
 	}
 

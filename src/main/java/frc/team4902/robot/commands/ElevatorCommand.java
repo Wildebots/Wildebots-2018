@@ -13,7 +13,17 @@ public class ElevatorCommand extends Command {
 	@Override
 	protected void execute() {
 		if (Input.primaryXBox.isPluggedIn()) {
-			if (ElevatorSystem.isManualOverride()) {
+			if (Input.getDriveType()) {
+
+				ElevatorSystem.getInstance().setSpeed(Input.primaryXBox.getRightY());
+				
+			} else {
+				
+				ElevatorSystem.getInstance().setSpeed(Input.primaryXBox.getLeftTrigger() - Input.primaryXBox.getRightTrigger());
+				
+			}
+			
+			/*if (ElevatorSystem.isManualOverride()) {
 				
 				/*if (ElevatorSystem.getInstance().encoder.get() <= ElevatorSystem.LOW_LIM && Input.primaryXBox.getRightY() < 0) {
 					return;
@@ -21,13 +31,13 @@ public class ElevatorCommand extends Command {
 				
 				if (ElevatorSystem.getInstance().pid.isEnabled()) {
 					ElevatorSystem.getInstance().pid.disable();
-				}*/
+				}
 					
 				System.out.println("Setting evelator speed");
 				
 				ElevatorSystem.getInstance().setSpeed(Input.primaryXBox.getRightY());
 			
-			}
+			}*/
 		} else if (Input.Attack3.isPluggedIn()) {
 			
 			if (!ElevatorSystem.getInstance().pid.isEnabled()) {

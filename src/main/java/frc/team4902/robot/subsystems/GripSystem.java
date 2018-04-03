@@ -13,6 +13,7 @@ public class GripSystem extends Subsystem{
 	
 	private GripSystem() {
 		super();
+		motorA.setInverted(true);
 	}
 
 	@Override
