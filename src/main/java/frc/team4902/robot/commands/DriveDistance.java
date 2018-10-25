@@ -15,7 +15,7 @@ public class DriveDistance extends PIDCommand {
 	public DriveDistance(double dist) {
 		super(P, I, D);
 		requires(DriveSystem.getInstance());
-		this.setSetpoint(dist/DriveSystem.INCHES_TO_REVS);
+		this.setSetpoint(dist/DriveSystem.WHEEL_CIRCUMFERENCE);
 	}
 
 	@Override
