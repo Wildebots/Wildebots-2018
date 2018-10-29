@@ -1,0 +1,7 @@
+If vscode asks for JDK, go into settings, search java.home, select edit and change value of java.home to the path of your JDK.
+Then, go to file exporer, right-click "My PC", select properties then environment variables and add variable JAVA_HOME with 
+the path as your value. Also, add the path to PATH variable.
+
+If vscode cannot find the JDK version, update gradle to support the JDK that you are using.
+
+If vscode cannot find gradleRIO, then download gradle language support from Naco Siren
