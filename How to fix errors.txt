@@ -5,3 +5,6 @@ the path as your value. Also, add the path to PATH variable.
 If vscode cannot find the JDK version, update gradle to support the JDK that you are using.
 
 If vscode cannot find gradleRIO, then download gradle language support from Naco Siren
+
+If you are having trouble building follow this guide 
+https://stackoverflow.com/questions/52511778/how-to-install-openjdk-11-on-windows
