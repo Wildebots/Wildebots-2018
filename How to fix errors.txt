@@ -8,3 +8,8 @@ If vscode cannot find gradleRIO, then download gradle language support from Naco
 
 If you are having trouble building follow this guide 
 https://stackoverflow.com/questions/52511778/how-to-install-openjdk-11-on-windows
+
+In order to configure the bridge(the modem), download FRC radio configureation utility, select ethernet and connect 
+the laptop to the rightmost port of the modem. Leave all settings as default, enter team number, robot name and add wpa key if you wish.
+Click configure and, once it is done, deiconnect the ethernet and connect to your robot modem, the name should be team_number-robot_name.
+Connect RIO to left ethernet port on modem. Open driver station and check if robot connection is green. If it is, you did it correctly.
