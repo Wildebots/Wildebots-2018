@@ -28,7 +28,7 @@ public class DriveCommand extends Command {
 				double ly = Input.primaryXBox.getLeftY();
 				
 				//if (ly > -0.05) {
-					DriveSystem.getInstance().getDrive().arcadeDrive(-Input.primaryXBox.getLeftY(), Input.primaryXBox.getLeftX());
+					DriveSystem.getInstance().getDrive().arcadeDrive(-Input.primaryXBox.getLeftY() * 0.95, Input.primaryXBox.getLeftX());
 				//} else {
 					//DriveSystem.getInstance().getDrive().arcadeDrive(-Input.primaryXBox.getLeftY(), Input.primaryXBox.getLeftX());
 				//}
