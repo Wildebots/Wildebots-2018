@@ -26,6 +26,8 @@ public class ElevatorCommand extends Command {
 			/*if (ElevatorSystem.isManualOverride()) {
 				
 				/*if (ElevatorSystem.getInstance().encoder.get() <= ElevatorSystem.LOW_LIM && Input.primaryXBox.getRightY() < 0) {
+				^
+				|	Dammit George -Smit
 					return;
 				}
 				
